@@ -1,0 +1,988 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  <title>My GSoC Journey &middot; Ahmed Gaper</title>
+    <meta name="title" content="My GSoC Journey &middot; Ahmed Gaper">
+
+  
+  
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/my-gsoc-journey/">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.b6d8ce5dea2a57be952bf0412b3a58937574a041bea949c2dae67a87b36df92f8cde6a4b68cf49d4c1d6f51039e122c8cc186da6aaa55a618e65a6e5744da5d9.css"
+    integrity="sha512-ttjOXeoqV76VK/BBKzpYk3V0oEG&#43;qUnC2uZ6h7Nt&#43;S&#43;M3mpLaM9J1MHW9RA54SLIzBhtpqqlWmGOZabldE2l2Q==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.e4b2d9aece2aa7a740c3ee7a0efc5acf56b204868ab0fb5bba9be32aed1cd0c9262979d98050759068d58144297f74b12ed05b5173cf2df2e6c097a066b984a8.js"
+      integrity="sha512-5LLZrs4qp6dAw&#43;56Dvxaz1ayBIaKsPtbupvjKu0c0MkmKXnZgFB1kGjVgUQpf3SxLtBbUXPPLfLmwJegZrmEqA=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.b4b722fcb5d42f34f52b30a92f3521b69f403ca9d96d0d6179eb537cb870f5d83fdf1fe836688d95d5c99fefbda4170487711006e56051fa67ea00da10521721.js" integrity="sha512-tLci/LXULzT1KzCpLzUhtp9APKnZbQ1heetTfLhw9dg/3x/oNmiNldXJn&#43;&#43;9pBcEh3EQBuVgUfpn6gDaEFIXIQ=="></script>
+  
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/my-gsoc-journey/">
+  <meta property="og:site_name" content="Ahmed Gaper">
+  <meta property="og:title" content="My GSoC Journey">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="My GSoC Journey">
+
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "My GSoC Journey",
+    "headline": "My GSoC Journey",
+    
+    
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/my-gsoc-journey\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Ahmed Gaper"
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1038"
+  }]
+  </script>
+
+
+
+  
+  
+    <meta name="author" content="Ahmed Gaper">
+  
+  
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://github.com/ahmed-gaper" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://linkedin.com/in/ahmed-gaper" rel="me">
+        
+      
+    
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.03cb160e3cfdb2667a2e2c80d283bebcf63ff8bbc4b629c9ab2babf6fae1d0c07ad470edae783efa4fabda2ac01c58d60e63b98b3c336be8208460f08f4354f5.js" integrity="sha512-A8sWDjz9smZ6LiyA0oO&#43;vPY/&#43;LvEtinJqyur9vrh0MB61HDtrng&#43;&#43;k&#43;r2irAHFjWDmO5izwza&#43;gghGDwj0NU9Q=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start gap-x-3 pt-[2px] pr-0 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          Ahmed Gaper
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/posts/"
+  
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+  <p class="text-base font-medium" title="Posts">
+    Blog
+  </p>
+</a>
+
+
+
+      
+        
+  <a
+  href="/about/"
+  
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+  <p class="text-base font-medium" title="About Ahmed Gaper">
+    About
+  </p>
+</a>
+
+
+
+      
+        
+  <a
+  href="https://github.com/ahmed-gaper"
+  target="_blank"
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+    <span >
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+    </span>
+  
+  <p class="text-base font-medium" title="">
+    
+  </p>
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/posts/"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="Posts">
+      Blog
+    </p>
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="About Ahmed Gaper">
+      About
+    </p>
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="https://github.com/ahmed-gaper"
+    
+      target="_blank"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+      <div >
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+      </div>
+    
+    <p class="text-bg font-bg" title="">
+      
+    </p>
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+  
+    
+      
+    
+  
+
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+      
+    
+    <img
+      id="background-image"
+      src="/back_hu_c17ffdb2863075c.jpg"
+      alt="Background Image"
+      class="absolute inset-0 w-full h-full object-cover">
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.0ad33cb9c066f652728b2cc09c9ceaf32645544f48e8b6b38f120d86f433ed997da275a49e6151fe0176430c45376812708d84727f3f969101fb44a4345b3f34.js"
+      integrity="sha512-CtM8ucBm9lJyiyzAnJzq8yZFVE9I6LazjxINhvQz7Zl9onWknmFR/gF2QwxFN2gScI2Ecn8/lpEB&#43;0SkNFs/NA=="
+      data-target-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/back.jpg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        My GSoC Journey
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <span>1038 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+
+<script
+  type="text/javascript"
+  src="/js/zen-mode.min.9814dee9614d32aeb56239d118edfe20acd6231424f9b19c2dd48835038414130a5e946c0d1c9087d60e60e31840c9babfd217e3d4b95643dc8d651a71ccdf4a.js"
+  integrity="sha512-mBTe6WFNMq61YjnRGO3&#43;IKzWIxQk&#43;bGcLdSINQOEFBMKXpRsDRyQh9YOYOMYQMm6v9IX49S5VkPcjWUacczfSg=="></script>
+
+<span class="mb-[2px]">
+  <span
+    id="zen-mode-button"
+    class="text-lg hover:text-primary-500"
+    title="Enable zen mode"
+    data-title-i18n-disable="Enable zen mode"
+    data-title-i18n-enable="Disable zen mode">
+    <span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg></span></span>
+  </span>
+</span>
+
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h1 class="relative group">Project overview 
+    <div id="project-overview" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#project-overview" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+<p>The Accord Project uses <strong>concerto</strong> models as human-readable schemas that drive the logic in smart legal contracts. This project delivered a <strong>concerto Linter</strong>: a modular tool that statically analyzes <code>.cto</code> model files and reports issues (naming, structural problems, reserved keywords, etc.) so models are high-quality before they are consumed.</p>
+<p><strong>Solution.</strong> A configurable linter that: 1) provides a sensible default ruleset, 2) lets teams supply or extend rulesets, and 3) integrates via a straightforward API and a CLI command so checks can run locally or in CI.</p>
+<p><strong>Goals.</strong> Catch common model issues early, reduce human review overhead, and provide actionable guidance rather than opaque errors.</p>
+
+<h3 class="relative group">Quick highlights 
+    <div id="quick-highlights" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#quick-highlights" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li>✅ Modular <code>@accordproject/concerto-linter</code> package</li>
+<li>✅ Portable default ruleset package <code>@accordproject/concerto-linter-default-ruleset</code></li>
+<li>✅ Programmatic API (<code>lintModel</code>) and <code>concerto lint</code> CLI</li>
+</ul>
+<hr>
+
+<h1 class="relative group">Usage guide 
+    <div id="usage-guide" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#usage-guide" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+
+<h3 class="relative group">Programmatic — <code>lintModel</code> API 
+    <div id="programmatic--lintmodel-api" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#programmatic--lintmodel-api" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>Install</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install @accordproject/concerto-linter
+</span></span></code></pre></div><p><strong>Basic usage (CTO string)</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">lintModel</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@accordproject/concerto-linter&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">lintModel</span><span class="p">(</span><span class="nx">ctoString</span><span class="p">);</span>
+</span></span></code></pre></div><p><strong>Parsed AST (ModelManager)</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ModelManager</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@accordproject/concerto-core&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// add CTO models and get AST
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">lintModel</span><span class="p">(</span><span class="nx">ast</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span></span></code></pre></div><p><strong>Options (most useful)</strong></p>
+<ul>
+<li><code>ruleset</code>: path to a custom Spectral ruleset or <code>'default'</code> to force the built-in ruleset.</li>
+<li><code>excludeNamespaces</code>: override default exclusions (e.g. <code>concerto.*</code>, <code>org.accordproject.*</code>).</li>
+</ul>
+<blockquote>
+<p>For comprehensive details, including additional examples and usage patterns, see the <a
+  href="https://github.com/accordproject/concerto/blob/main/packages/concerto-linter/README.md"
+    target="_blank"
+  >concerto-linter README</a></p></blockquote>
+
+<h3 class="relative group">CLI — <code>concerto lint</code> 
+    <div id="cli--concerto-lint" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#cli--concerto-lint" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">concerto lint [options]
+</span></span></code></pre></div><p><strong>Key options</strong></p>
+<ul>
+<li><code>--model &lt;file&gt;</code> — path to .cto model(s)</li>
+<li><code>--exclude &lt;namespace&gt;</code> — exclude a namespace</li>
+<li><code>-j</code> — JSON output</li>
+<li><code>--ruleset &lt;file|'default'&gt;</code></li>
+</ul>
+<p><strong>Examples</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">concerto lint --model model.cto
+</span></span><span class="line"><span class="cl">concerto lint --model model.cto -j
+</span></span><span class="line"><span class="cl">concerto lint --model model.cto --ruleset ./custom-ruleset.yaml
+</span></span></code></pre></div><hr>
+
+<h1 class="relative group">Default Ruleset 
+    <div id="default-ruleset" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#default-ruleset" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+<p><code>@accordproject/concerto-linter-default-ruleset</code> provides a curated set of Spectral rules tuned to concerto ASTs. It ships as a separate npm package so teams can consume or extend it.</p>
+<p><strong>Available rule categories (examples):</strong></p>
+<ul>
+<li><code>namespace-version</code> — ensure namespace includes a version</li>
+<li><code>no-reserved-keywords</code> — prevent use of reserved identifiers</li>
+<li><code>pascal-case-declarations</code> — declaration names must be PascalCase</li>
+<li><code>camel-case-properties</code> — property names must be camelCase</li>
+<li><code>upper-snake-case-enum-constants</code> — enum constants in UPPER_SNAKE_CASE</li>
+<li><code>pascal-case-decorators</code> — decorator names in PascalCase</li>
+<li><code>string-length-validator</code> — string properties should have length validators</li>
+<li><code>no-empty-declarations</code> — disallow empty declarations</li>
+<li><code>abstract-must-subclassed</code> — require concrete subclasses for abstract types</li>
+</ul>
+<p><strong>How to customize (summary)</strong></p>
+<ul>
+<li>Extend the default ruleset with <code>extends: '@accordproject/concerto-linter-default-ruleset'</code>.</li>
+<li>Disable specific rules by setting their ID to <code>off</code>.</li>
+<li>Set severity levels (<code>error</code>, <code>warn</code>, <code>info</code>, <code>hint</code>).</li>
+<li>Create custom rules using Spectral&rsquo;s <code>given</code> / <code>then</code> constructs or custom functions when needed.</li>
+</ul>
+<blockquote>
+<p>For more configuration examples, and extension guidance are available in the <a
+  href="https://github.com/accordproject/concerto/blob/main/packages/concerto-linter/default-ruleset/README.md"
+    target="_blank"
+  >default ruleset README</a></p></blockquote>
+<hr>
+
+<h1 class="relative group">Contributions &amp; Merged PRs — Challenges &amp; how I solved them 
+    <div id="contributions--merged-prs--challenges--how-i-solved-them" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#contributions--merged-prs--challenges--how-i-solved-them" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+
+<h4 class="relative group">Challenge 1 — Understanding the existing architecture, defining the linter shape with configurable behavior 
+    <div id="challenge-1--understanding-the-existing-architecture-defining-the-linter-shape-with-configurable-behavior" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#challenge-1--understanding-the-existing-architecture-defining-the-linter-shape-with-configurable-behavior" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p><strong>Problem.</strong> The concerto repository is large and feature-rich; I needed to identify stable extension points and design a simple, maintainable configurable linter architecture that fits the existing ecosystem.</p>
+<p><strong>How I solved it.</strong> First, I defined a high-level architecture up front: a small, focused linter runtime, a separate default-ruleset package. I exposed a simple programmatic API (<code>lintModel</code>) with  configuration and built-in support for loading rulesets. Through iterative development, we incrementally refined the solution until it reached the full set of required features.. Finally, I delivered thorough README usage examples, configuration guides, and a comprehensive unit/integration test suite so the linter is reliable, easy to extend, and simple for other contributors to use.</p>
+<p><strong>Merged PRs:</strong></p>
+<ul>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1027"
+    target="_blank"
+  >feat: Add concert-linter package structure and naming convention rules #1027</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1036"
+    target="_blank"
+  >feat(linter): Add configurable linter support #1036</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1038"
+    target="_blank"
+  >feat(linter): Introduce default-ruleset package for extensibility #1038</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1039"
+    target="_blank"
+  >Fix: Resolve default-ruleset Publish Failure #1039</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1060"
+    target="_blank"
+  >docs(linter): update READMEs and add unit tests for all rules #1060</a></li>
+</ul>
+<hr>
+
+<h4 class="relative group">Challenge 2 — Designing a useful default ruleset grounded in real-world needs 
+    <div id="challenge-2--designing-a-useful-default-ruleset-grounded-in-real-world-needs" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#challenge-2--designing-a-useful-default-ruleset-grounded-in-real-world-needs" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p><strong>Problem:</strong> A default ruleset must be practical and relevant; it cannot be a collection of arbitrary checks. Finding and implementing rules that actually improve model quality required research and careful design.</p>
+<p><strong>How I solved it:</strong> I reviewed common modeling mistakes from real-world examples, prioritized rules that give actionable fixes, and implemented them using Spectral constructs (and custom functions where needed).</p>
+<p><strong>Merged PRs:</strong></p>
+<ul>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1045"
+    target="_blank"
+  >feat: add new default ruleset #1045</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1054"
+    target="_blank"
+  >feat(linter): Add string length, PascalCase decorator name rules #1054</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1056"
+    target="_blank"
+  >fix(linter): add reserved-keywords rule and enhance decorator-name rule #1056</a></li>
+</ul>
+<hr>
+
+<h2 class="relative group">Challenge 3 — Output shape, filtering, and CLI integration 
+    <div id="challenge-3--output-shape-filtering-and-cli-integration" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#challenge-3--output-shape-filtering-and-cli-integration" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>Problem:</strong> Consumers (API users and CLI users) expect a predictable output shape and filtering options (namespaces, JSON output, severity levels). Designing the output and CLI UX required coordination between the linter library and the CLI tooling.</p>
+<p><strong>How I solved it:</strong> I refactored the linter output to a stable shape, added namespace filtering, and implemented the <code>concerto lint</code> command so both programmatic and CLI consumers get consistent results.</p>
+<p><strong>Merged PRs:</strong></p>
+<ul>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1057"
+    target="_blank"
+  >feat(linter): refactor lintModel output shape &amp; add namespace filtering #1057</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto-cli/pull/78"
+    target="_blank"
+  >feat(linter): add lint command (concerto-cli) #78</a></li>
+</ul>
+<hr>
+
+<h2 class="relative group">Conclusion &amp; Future Work 
+    <div id="conclusion--future-work" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#conclusion--future-work" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The concerto Linter lays the foundation for improved model quality across the Accord ecosystem. It ships a default ruleset, a programmatic API, a CLI, and configuration discovery, enabling teams to adopt the tool in local development and CI.</p>
+<p><strong>Next steps / future work</strong></p>
+<ul>
+<li>Expand the ruleset with community-driven rules (advanced inheritance checks, template-specific hints).</li>
+<li>Tune severity and default rule choices based on ecosystem feedback.</li>
+<li>Integrate lint annotations into the Accord VSCode extension so <code>.cto</code> files show inline diagnostics.</li>
+</ul>
+<hr>
+
+<h2 class="relative group">Acknowledgments 
+    <div id="acknowledgments" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#acknowledgments" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>One of the greatest benefits of this project was the weekly Working Group (WG) meetings. They showed me how a professional team and organizational workflow operate and elevated my software career to a new level of professionalism. The routine of proposing what I would do and receiving feedback from the entire WG helped me iterate toward the best and most useful solutions. The 1:1 sessions with Jamie were also incredibly valuable, Jamie provided a clear plan and guidance that I followed throughout the project, which made a big difference in both my progress and learning.</p>
+<p>The development of the concerto Linter was guided by the Accord Project community. Special thanks to all my mentors for technical mentorship and advice on rules design and configuration. Thanks to contributors to Spectral and the open-source community for tools that made this possible. This work was completed as part of Google Summer of Code 2025 with the support of the Accord Project (a Linux Foundation initiative) and is released under the Apache 2.0 License.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/posts/my-gsoc-journey/&amp;title=My%20GSoC%20Journey"
+          title="Share on LinkedIn"
+          aria-label="Share on LinkedIn">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/posts/my-gsoc-journey/&amp;text=My%20GSoC%20Journey"
+          title="Tweet on Twitter"
+          aria-label="Tweet on Twitter">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
+        </a>
+      
+    
+  </section>
+
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts\My GSoC journey.md"
+          data-oid-likes="likes_posts\My GSoC journey.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+
+
+      
+    </footer>
+  </article>
+
+        <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0 z-10">
+  <a
+    href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Ahmed Gaper
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+
+    </div>
+  </body>
+  
+</html>

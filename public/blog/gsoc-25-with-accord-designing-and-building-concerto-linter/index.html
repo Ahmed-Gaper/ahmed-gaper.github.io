@@ -1,0 +1,1110 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  <title>GSoC &#39;25 with Accord : Designing and Building Concerto Linter &middot; Ahmed Gaper</title>
+    <meta name="title" content="GSoC &#39;25 with Accord : Designing and Building Concerto Linter &middot; Ahmed Gaper">
+
+  
+  <meta name="description" content="An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.c93ef3fa6fcdb4544b0568df9a12092fc74007f96e585ee4a921ab800fdbc28d096030e30654049663f28d34142553d9e41570717d43c4d8ab0e96e222b5106f.css"
+    integrity="sha512-yT7z&#43;m/NtFRLBWjfmhIJL8dAB/luWF7kqSGrgA/bwo0JYDDjBlQElmPyjTQUJVPZ5BVwcX1DxNirDpbiIrUQbw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.cc229c460bbb423c93182f5b39da6e49791145911456011f20064dd62b67620c9a9701852380411ab315d00e91b12fb96556212bbd05bc7e20d10f3c13f4534e.js"
+    integrity="sha512-zCKcRgu7QjyTGC9bOdpuSXkRRZEUVgEfIAZN1itnYgyalwGFI4BBGrMV0A6RsS&#43;5ZVYhK70FvH4g0Q88E/RTTg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.e4b2d9aece2aa7a740c3ee7a0efc5acf56b204868ab0fb5bba9be32aed1cd0c9262979d98050759068d58144297f74b12ed05b5173cf2df2e6c097a066b984a8.js"
+      integrity="sha512-5LLZrs4qp6dAw&#43;56Dvxaz1ayBIaKsPtbupvjKu0c0MkmKXnZgFB1kGjVgUQpf3SxLtBbUXPPLfLmwJegZrmEqA=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.b4b722fcb5d42f34f52b30a92f3521b69f403ca9d96d0d6179eb537cb870f5d83fdf1fe836688d95d5c99fefbda4170487711006e56051fa67ea00da10521721.js" integrity="sha512-tLci/LXULzT1KzCpLzUhtp9APKnZbQ1heetTfLhw9dg/3x/oNmiNldXJn&#43;&#43;9pBcEh3EQBuVgUfpn6gDaEFIXIQ=="></script>
+  
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
+  <meta property="og:site_name" content="Ahmed Gaper">
+  <meta property="og:title" content="GSoC &#39;25 with Accord : Designing and Building Concerto Linter">
+  <meta property="og:description" content="An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-09-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-16T00:00:00+00:00">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GSoC &#39;25 with Accord : Designing and Building Concerto Linter">
+  <meta name="twitter:description" content="An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.">
+
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Blogs",
+    "name": "GSoC \u002725 with Accord : Designing and Building Concerto Linter",
+    "headline": "GSoC \u002725 with Accord : Designing and Building Concerto Linter",
+    
+    "abstract": "An overview of my GSoC\u002725 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/blog\/gsoc-25-with-accord-designing-and-building-concerto-linter\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Ahmed Gaper"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-09-16T00:00:00\u002b00:00",
+    "datePublished": "2025-09-16T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-09-16T00:00:00\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1052"
+  }]
+  </script>
+
+
+
+  
+  
+    <meta name="author" content="Ahmed Gaper">
+  
+  
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://github.com/ahmed-gaper" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://linkedin.com/in/ahmed-gaper" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://x.com/Ahmed_Gaper25" rel="me">
+        
+      
+    
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.03cb160e3cfdb2667a2e2c80d283bebcf63ff8bbc4b629c9ab2babf6fae1d0c07ad470edae783efa4fabda2ac01c58d60e63b98b3c336be8208460f08f4354f5.js" integrity="sha512-A8sWDjz9smZ6LiyA0oO&#43;vPY/&#43;LvEtinJqyur9vrh0MB61HDtrng&#43;&#43;k&#43;r2irAHFjWDmO5izwza&#43;gghGDwj0NU9Q=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px] z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom bg-neutral dark:bg-neutral-800"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start gap-x-3 pt-[2px] pr-0 pb-[3px] pl-0">
+  
+  
+    
+    
+      <div>
+        <a href="/" class="flex">
+          <span class="sr-only">Ahmed Gaper</span>
+          
+            <img
+              src="/img/favicon-32x32.png"
+              width="16"
+              height="16"
+              class="logo max-h-[5rem] max-w-[5rem] object-scale-down object-left nozoom"
+              alt="Ahmed Gaper">
+          
+        </a>
+      </div>
+    
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          Ahmed Gaper
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/blog/"
+  
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+  <p class="text-base font-medium" title="Blogs">
+    Blog
+  </p>
+</a>
+
+
+
+      
+        
+  <a
+  href="https://github.com/ahmed-gaper"
+  target="_blank"
+  class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+  
+    <span >
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+    </span>
+  
+  <p class="text-base font-medium" title="">
+    
+  </p>
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/blog/"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+    <p class="text-bg font-bg" title="Blogs">
+      Blog
+    </p>
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="https://github.com/ahmed-gaper"
+    
+      target="_blank"
+    
+    class="flex items-center text-gray-500 hover:text-primary-600 dark:hover:text-primary-400">
+    
+      <div >
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+      </div>
+    
+    <p class="text-bg font-bg" title="">
+      
+    </p>
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/js/background-blur.min.0ad33cb9c066f652728b2cc09c9ceaf32645544f48e8b6b38f120d86f433ed997da275a49e6151fe0176430c45376812708d84727f3f969101fb44a4345b3f34.js"
+  integrity="sha512-CtM8ucBm9lJyiyzAnJzq8yZFVE9I6LazjxINhvQz7Zl9onWknmFR/gF2QwxFN2gScI2Ecn8/lpEB&#43;0SkNFs/NA=="
+  data-target-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+  
+    
+      
+    
+  
+
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    <img
+      id="background-image"
+      src="/img/Animated.svg"
+      alt="Background Image"
+      class="absolute inset-0 w-full h-full object-cover">
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.0ad33cb9c066f652728b2cc09c9ceaf32645544f48e8b6b38f120d86f433ed997da275a49e6151fe0176430c45376812708d84727f3f969101fb44a4345b3f34.js"
+      integrity="sha512-CtM8ucBm9lJyiyzAnJzq8yZFVE9I6LazjxINhvQz7Zl9onWknmFR/gF2QwxFN2gScI2Ecn8/lpEB&#43;0SkNFs/NA=="
+      data-target-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/img/Animated.svg"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        GSoC '25 with Accord : Designing and Building Concerto Linter
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+
+  
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-09-16T00:00:00&#43;00:00">16 September 2025</time><span class="px-2 text-primary-500">&middot;</span><span>1052 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span><span class="px-2 text-primary-500">&middot;</span>
+
+
+
+<script
+  type="text/javascript"
+  src="/js/zen-mode.min.9814dee9614d32aeb56239d118edfe20acd6231424f9b19c2dd48835038414130a5e946c0d1c9087d60e60e31840c9babfd217e3d4b95643dc8d651a71ccdf4a.js"
+  integrity="sha512-mBTe6WFNMq61YjnRGO3&#43;IKzWIxQk&#43;bGcLdSINQOEFBMKXpRsDRyQh9YOYOMYQMm6v9IX49S5VkPcjWUacczfSg=="></script>
+
+<span class="mb-[2px]">
+  <span
+    id="zen-mode-button"
+    class="text-lg hover:text-primary-500"
+    title="Enable zen mode"
+    data-title-i18n-disable="Enable zen mode"
+    data-title-i18n-enable="Disable zen mode">
+    <span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg></span></span>
+  </span>
+</span>
+
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    </div>
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+          <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-accord-project--concerto">What is Accord Project &amp; Concerto?</a></li>
+        <li><a href="#why-a-concerto-linter-is-essential">Why a Concerto Linter is Essential</a></li>
+        <li><a href="#architectural-foundation">Architectural Foundation</a></li>
+        <li><a href="#how-it-works-ast-based-analysis">How It Works: AST-Based Analysis</a></li>
+        <li><a href="#default-ruleset--fully-configurable">Default Ruleset | Fully Configurable</a></li>
+        <li><a href="#final-deliverable">Final Deliverable</a></li>
+        <li><a href="#command-line-interface">Command-Line Interface</a></li>
+        <li><a href="#project-contributions">Project Contributions</a></li>
+        <li><a href="#my-final-submission-link">My final submission link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-accord-project--concerto">What is Accord Project &amp; Concerto?</a></li>
+        <li><a href="#why-a-concerto-linter-is-essential">Why a Concerto Linter is Essential</a></li>
+        <li><a href="#architectural-foundation">Architectural Foundation</a></li>
+        <li><a href="#how-it-works-ast-based-analysis">How It Works: AST-Based Analysis</a></li>
+        <li><a href="#default-ruleset--fully-configurable">Default Ruleset | Fully Configurable</a></li>
+        <li><a href="#final-deliverable">Final Deliverable</a></li>
+        <li><a href="#command-line-interface">Command-Line Interface</a></li>
+        <li><a href="#project-contributions">Project Contributions</a></li>
+        <li><a href="#my-final-submission-link">My final submission link</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h3 class="relative group">What is Accord Project &amp; Concerto? 
+    <div id="what-is-accord-project--concerto" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#what-is-accord-project--concerto" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The <a
+  href="https://accordproject.org/"
+    target="_blank"
+  >Accord Project</a> (a Linux Foundation project) is an open ecosystem transforming <em>human-readable</em> legal text to <em>machine-readable</em> and <em>machine-executable</em>, Enabling anyone to build smart agreements and documents on a technology neutral platform,</p>
+<p>Accord uses <strong>Concerto</strong>, a simple, human-friendly modeling language that connects contract writing (legal text) with code that can run and enforce it.</p>
+<p>In practice, a smart legal contract maps natural-language clauses and sections to typed, machine-readable components. Concerto models serve as those data schemas - defining <code>concept</code> other types that the contract’s executable logic reads and updates (Think of <code>concept</code> as similar to a class in programming.)</p>
+<p>As example</p>
+<pre tabindex="0"><code>concept Person {
+  o String firstName
+  o String lastName
+  o DateTime dateOfBirth
+}
+</code></pre><p>This model defines a <code>Person</code> type with structured, typed properties, enabling robust data validation and code generation.</p>
+
+<h3 class="relative group">Why a Concerto Linter is Essential 
+    <div id="why-a-concerto-linter-is-essential" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#why-a-concerto-linter-is-essential" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Instead of relying on manual reviews or ad-hoc checks, teams can run the linter automatically during development so problems are caught early, Like how ESLint validates JS code, Concerto’s domain specific language requires a dedicated linter that understands its AST and metamodel to ensure models follow best practices and team rules</p>
+<p>So the <strong>Concerto Linter</strong> was developed to <strong>automate model validation and best practices</strong>, Ensure Concerto model language is Complete and have all the features needed to match top modeling languages globally</p>
+
+<h3 class="relative group">Architectural Foundation 
+    <div id="architectural-foundation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#architectural-foundation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>I designed the <code>accordproject/concerto-linter</code>  as a modular, standalone package decoupled from <code>concerto-core</code>, following the separation-of-concerns pattern (similar to TypeScript’s core compiler and ESLint). And this give flexibility to add, remove, or edit rules without modifying the core library.</p>
+
+<h3 class="relative group">How It Works: AST-Based Analysis 
+    <div id="how-it-works-ast-based-analysis" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#how-it-works-ast-based-analysis" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>The Concerto Linter operates by analyzing the language&rsquo;s JSON Abstract Syntax Tree (AST) of the model. It is built on the <a
+  href="https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview"
+    target="_blank"
+  >Spectral</a> framework.</p>
+<p>This approach saves development time because Spectral operates directly on our JSON Abstract Syntax Tree (AST). In contrast, traditional linters work on source code, so building a custom linter for Concerto from scratch would require significantly more effort.</p>
+<p>In this setup, Spectral&rsquo;s configuration file serves as the <strong>brain</strong> of the linter, defining which rules to run and their parameters, while the rule functions act as the <strong>muscle</strong> that performs the checks. We leveraged both Spectral&rsquo;s built-in functions and implemented custom ones for our project-specific logic.</p>
+<p>The workflow is as follows:</p>
+<ol>
+<li>The linter receives the JSON AST of the model.</li>
+<li>It reads the configuration file to load the rule settings.</li>
+<li>It executes the enabled rules against the AST.</li>
+<li><strong>Targeting the AST:</strong> Each rule uses JSONPath queries to select specific nodes. For example, the query <code>$.declarations[*].properties[*].name</code> selects all property names within declarations.</li>
+<li>The linter calls the corresponding built-in or custom function for each selected node.</li>
+<li>Finally, it outputs errors or warnings for any violations, with their severity levels determined by the configuration.
+![[Picture1.jpg]]</li>
+</ol>
+
+<h3 class="relative group">Default Ruleset | Fully Configurable 
+    <div id="default-ruleset--fully-configurable" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#default-ruleset--fully-configurable" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>One of the most challenging parts of this project was defining a sensible <strong>default ruleset</strong> for the linter. We iteratively searched for, ran, and tested rules against many real-world Concerto modules to identify patterns that actually cause problems in practice, not just a long list of noisy checks. The result is a compact, practical default ruleset published as the <code>@accordproject/concerto-linter-default-ruleset</code> sub-package of <code>@accordproject/concerto-linter</code>.</p>
+<p>Below is the default ruleset included in that package:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Rule</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>namespace-version</td>
+          <td>Requires a version number in the model <code>namespace</code> declaration. Enforces semantic-versioning style in namespaces to improve clarity and compatibility.</td>
+      </tr>
+      <tr>
+          <td>no-reserved-keywords</td>
+          <td>Prevents use of language-reserved keywords for declarations, properties, and decorators to avoid conflicts and unexpected behaviour.</td>
+      </tr>
+      <tr>
+          <td>pascal-case-declarations</td>
+          <td>Enforces PascalCase for declaration names (scalar, enum, concept, asset, participant, transaction, event), improving consistency and readability.</td>
+      </tr>
+      <tr>
+          <td>camel-case-properties</td>
+          <td>Enforces camelCase for property names of common scalar types (String, Double, Integer, Long, DateTime, Boolean) for consistent property naming.</td>
+      </tr>
+      <tr>
+          <td>upper-snake-case-enum-constants</td>
+          <td>Enforces UPPER_SNAKE_CASE for enum constants to keep enum naming consistent and obvious.</td>
+      </tr>
+      <tr>
+          <td>pascal-case-decorators</td>
+          <td>Enforces PascalCase for decorator names for consistency with declaration naming.</td>
+      </tr>
+      <tr>
+          <td>string-length-validator</td>
+          <td>Requires string properties to include a length validator where appropriate, preventing inconsistent/unsafe string sizes and encouraging predictable storage.</td>
+      </tr>
+      <tr>
+          <td>no-empty-declarations</td>
+          <td>Flags declarations that are empty (no properties or members), helping avoid unused or placeholder declarations in the model.</td>
+      </tr>
+      <tr>
+          <td>abstract-must-subclassed</td>
+          <td>Ensures abstract declarations have at least one concrete subclass, preventing orphaned abstract types and encouraging coherent model design.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The linter&rsquo;s configurability is powered by Spectral, which provides a flexible foundation for creating rulesets that align perfectly with each project&rsquo;s requirements:</p>
+<ul>
+<li><strong>Extend</strong> the default ruleset rather than editing it directly.</li>
+<li><strong>Enable/disable</strong> individual rules for a specific project.</li>
+<li><strong>Adjust severity</strong> (error / warning / info) per rule.</li>
+<li><strong>Compose entirely new rulesets</strong> if your project needs stricter or looser validation.</li>
+<li><strong>Target scope</strong> so rules apply only to particular namespaces, files, or directories (so you can lint multiple projects with different conventions in the same workspace).
+this flexibility ensures the <code>concerto-linter</code> can integrate seamlessly into any development workflow, from strictly enforcing a team&rsquo;s style guide to providing gentle guidance for new users.</li>
+</ul>
+
+<h3 class="relative group">Final Deliverable 
+    <div id="final-deliverable" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#final-deliverable" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>At the end of the project we shipped a compact, well-structured, <strong>configurable linter</strong> for Concerto. It includes a sensible default ruleset and makes customizing rules trivial, usually just a few lines in a Spectral ruleset file. A simple CLI lets you run the linter locally or integrate it into CI so teams can quickly validate models.</p>
+
+<h3 class="relative group">Command-Line Interface 
+    <div id="command-line-interface" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#command-line-interface" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">concerto lint <span class="o">[</span>options<span class="o">]</span>
+</span></span></code></pre></div><p><strong>Available Options:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Option</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>--model &lt;file&gt;</code></td>
+          <td>Path to concerto model (CTO) files to lint.</td>
+      </tr>
+      <tr>
+          <td><code>--exclude &lt;namespace&gt;</code></td>
+          <td>One or more namespaces to exclude from lint results. Defaults include <code>concerto.*</code> and <code>org.accordproject.*</code>.</td>
+      </tr>
+      <tr>
+          <td><code>-j</code></td>
+          <td>Output results in JSON format. Default output is human-readable text.</td>
+      </tr>
+      <tr>
+          <td><code>--ruleset &lt;file|'default'&gt;</code></td>
+          <td>Path to a custom Spectral ruleset file, or the string <code>'default'</code> to force the built-in ruleset.</td>
+      </tr>
+      <tr>
+          <td><strong>Example Output:</strong></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>![[Pciture2.png]]</p>
+
+<h3 class="relative group">Project Contributions 
+    <div id="project-contributions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#project-contributions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>This section lists the key PRs I contributed to deliver the concerto-linter core and its ecosystem:</p>
+<ul>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1027"
+    target="_blank"
+  >feat: Add concert-linter package structure and naming convention rules #1027</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1036"
+    target="_blank"
+  >feat(linter): Add configurable linter support #1036</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1038"
+    target="_blank"
+  >feat(linter): Introduce default-ruleset package for extensibility #1038</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1039"
+    target="_blank"
+  >Fix: Resolve default-ruleset Publish Failure #1039</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1045"
+    target="_blank"
+  >feat: add new default ruleset #1045</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1054"
+    target="_blank"
+  >feat(linter): Add string length, PascalCase decorator name rules #1054</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1056"
+    target="_blank"
+  >fix(linter): add reserved-keywords rule and enhance decorator-name rule #1056</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1057"
+    target="_blank"
+  >feat(linter): refactor lintModel output shape &amp; add namespace filtering #1057</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1060"
+    target="_blank"
+  >docs(linter): update READMEs and add unit tests for all rules #1060</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto-cli/pull/78"
+    target="_blank"
+  >feat(linter): add lint command #78</a></li>
+<li><a
+  href="https://github.com/accordproject/concerto/pull/1060"
+    target="_blank"
+  >docs(concerto-linter): add docs for linter and CLI commands #83</a></li>
+</ul>
+<hr>
+
+<h3 class="relative group"><a
+  href="https://accordproject.org/news/gsoc-2025-linter-for-concerto/"
+    target="_blank"
+  >My final submission link </a> 
+    <div id="my-final-submission-link" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#my-final-submission-link" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;title=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
+          title="Share on LinkedIn"
+          aria-label="Share on LinkedIn">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        <a
+          target="_blank"
+          class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;text=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
+          title="Tweet on Twitter"
+          aria-label="Tweet on Twitter">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
+        </a>
+      
+    
+  </section>
+
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_Blog\GSoC &#39;25 with Accord Designing and Building Concerto Linter.md"
+          data-oid-likes="likes_Blog\GSoC &#39;25 with Accord Designing and Building Concerto Linter.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/blog/my-gsoc-win/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >My GSoC Win</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2025-09-16T00:00:00&#43;00:00">16 September 2025</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0 z-10">
+  <a
+    href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Ahmed Gaper
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+
+    </div>
+  </body>
+  
+</html>
