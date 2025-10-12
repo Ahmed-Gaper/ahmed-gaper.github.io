@@ -6,11 +6,11 @@ summary: "An overview of my GSoC'25 project, written to be generic (not specific
 ---
 ### What is Accord Project & Concerto?
 
-The [Accord Project](https://accordproject.org/) (a Linux Foundation project) is an open ecosystem transforming _human-readable_ legal text to _machine-readable_ and _machine-executable_, Enabling anyone to build smart agreements and documents on a technology neutral platform,
+The [Accord Project](https://accordproject.org/) (a Linux Foundation project) is an open ecosystem transforming _human-readable_ legal text to _machine-readable_ and _machine-executable_, Enabling anyone to build smart agreements and documents on a technology neutral platform.
 
 Accord uses **Concerto**, a simple, human-friendly modeling language that connects contract writing (legal text) with code that can run and enforce it.
 
-In practice, a smart legal contract maps natural-language clauses and sections to typed, machine-readable components. Concerto models serve as those data schemas - defining `concept` other types that the contract’s executable logic reads and updates (Think of `concept` as similar to a class in programming.)
+In practice, a smart legal contract maps natural-language clauses and sections to typed, machine-readable components. Concerto models serve as those data schemas - defining `concept` and other types that the contract’s executable logic reads and updates (Think of `concept` as similar to a class in programming.)
 
 As example 
 ```
@@ -24,7 +24,7 @@ This model defines a `Person` type with structured, typed properties, enabling
 
 ### Why a Concerto Linter is Essential
 
-Instead of relying on manual reviews or ad-hoc checks, teams can run the linter automatically during development so problems are caught early, Like how ESLint validates JS code, Concerto’s domain specific language requires a dedicated linter that understands its AST and metamodel to ensure models follow best practices and team rules
+Instead of relying on manual reviews or ad-hoc checks, teams can run the linter automatically during development so problems are caught early, Like how ESLint validates JS code, Concerto’s domain specific language requires a dedicated linter that understands its AST and metamodel to ensure models follow best practices and team rules.
 
 So the **Concerto Linter** was developed to **automate model validation and best practices**, Ensure Concerto model language is Complete and have all the features needed to match top modeling languages globally
 
@@ -46,7 +46,8 @@ The workflow is as follows:
 4. **Targeting the AST:** Each rule uses JSONPath queries to select specific nodes. For example, the query `$.declarations[*].properties[*].name` selects all property names within declarations.
 5. The linter calls the corresponding built-in or custom function for each selected node.
 6. Finally, it outputs errors or warnings for any violations, with their severity levels determined by the configuration.
-![[Picture1.jpg]]
+
+![Linter workflow](/Picture1.jpg)
 ### Default Ruleset | Fully Configurable
 One of the most challenging parts of this project was defining a sensible **default ruleset** for the linter. We iteratively searched for, ran, and tested rules against many real-world Concerto modules to identify patterns that actually cause problems in practice, not just a long list of noisy checks. The result is a compact, practical default ruleset published as the `@accordproject/concerto-linter-default-ruleset` sub-package of `@accordproject/concerto-linter`.
 
@@ -70,7 +71,8 @@ The linter's configurability is powered by Spectral, which provides a flexible f
 - **Enable/disable** individual rules for a specific project.
 - **Adjust severity** (error / warning / info) per rule.
 - **Compose entirely new rulesets** if your project needs stricter or looser validation.
-- **Target scope** so rules apply only to particular namespaces, files, or directories (so you can lint multiple projects with different conventions in the same workspace).
+- **Target scope** so rules apply only to particular namespaces.
+
 this flexibility ensures the `concerto-linter` can integrate seamlessly into any development workflow, from strictly enforcing a team's style guide to providing gentle guidance for new users.
 ### Final Deliverable
 At the end of the project we shipped a compact, well-structured, **configurable linter** for Concerto. It includes a sensible default ruleset and makes customizing rules trivial, usually just a few lines in a Spectral ruleset file. A simple CLI lets you run the linter locally or integrate it into CI so teams can quickly validate models.
@@ -91,7 +93,7 @@ concerto lint [options]
 | `--ruleset <file\|'default'>` | Path to a custom Spectral ruleset file, or the string `'default'` to force the built-in ruleset.              |
 **Example Output:**
 
-![[Pciture2.png]]
+![Output](/Picture2.png)
 
 ### Project Contributions
 
@@ -107,7 +109,7 @@ This section lists the key PRs I contributed to deliver the concerto-linter core
 -  [feat(linter): refactor lintModel output shape & add namespace filtering #1057](https://github.com/accordproject/concerto/pull/1057)
 - [docs(linter): update READMEs and add unit tests for all rules #1060](https://github.com/accordproject/concerto/pull/1060)
 - [feat(linter): add lint command #78](https://github.com/accordproject/concerto-cli/pull/78)
-- [docs(concerto-linter): add docs for linter and CLI commands #83](https://github.com/accordproject/concerto/pull/1060)
+- [docs(concerto-linter): add docs for linter and CLI commands #83](https://github.com/accordproject/concerto-docs/pull/83)
 
 
 ---

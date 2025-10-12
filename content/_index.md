@@ -1,0 +1,1 @@
+Software Engineer passionate about backend development and open source contribution. I enjoy building real-world projects and understanding how things work behind the scenes - from system architecture to low-level implementation details.

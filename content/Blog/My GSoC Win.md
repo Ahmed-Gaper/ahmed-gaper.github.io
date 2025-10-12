@@ -1,6 +1,6 @@
 ---
 title: "My GSoC Win"
-date: 2025-09-16
+date: 2025-10-09
 draft: false
 summary: "A story-like recap of my GSoC journey, encouraging anyone to take on the experience (or retry it), without rehashing the application process details that are already covered elsewhere. I've gathered every source and tool that helped me, starting from the very basics of what GSoC is, focusing on the things I didn't find in other resources."
 ---
@@ -10,11 +10,8 @@ I was a second-year CS student who spent most of my time on problem-solving, CS 
 
 I asked myself, "Am I ready for this step?" The answer was **a `Win Win situation`**. As a beginner, I wanted to level up in topics I already knew, learn new subjects, improve my Git and GitHub skills, and discover what open source really is. I realized that even if I didn’t get accepted, I would still achieve all of that. And if I _did_ get accepted? The thought was incredible.
 
-##### The Leap After Acceptance
-
-Being accepted feels like a leap into the future. For about three months in the summer, you work on a real-world project with a mentor guiding you. The experience of seeing how a professional team and an organization’s workflow operate will push your software career to a new level. And when you **learn** about the stipend, your eyes will light up.
-##### In Short, What Is GSoC
-_**for more details, check the sources**_
+#### In Short, What Is GSoC
+_**for more details, check the resources**_
 
 Google Summer of Code is a program run by Google that helps bring new developers into the world of open-source software.
 
@@ -23,6 +20,10 @@ Think of it as a paid, remote internship for students. Open-source organizations
 If a student is selected, they spend their summer (about three months) working on that project under the guidance of mentors from the organization. The mentors provide help and feedback, making it a great learning experience. In return for successfully completing their project, the student receives a stipend from Google. It's a way for students to gain real-world experience, get paid, and contribute to software that people all over the world use.
 
 So, you find an organization and a project from the ones that want to participate in GSoC, and then you submit a proposal explaining how you will implement it.
+
+#### The Leap After Acceptance
+
+Being accepted feels like a leap into the future. For about three months in the summer, you work on a real-world project with a mentor guiding you. The experience of seeing how a professional team and an organization’s workflow operate will push your software career to a new level. And when you **learn** about the stipend, your eyes will light up.
 
 ### The Starting Point
 
