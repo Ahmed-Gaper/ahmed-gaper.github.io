@@ -18,7 +18,7 @@
       <author>ahmedgaper251@gmail.com (Ahmed Gaper)</author>
       <guid>http://localhost:1313/blog/my-gsoc-win/</guid>
       <description>A story-like recap of my GSoC journey, encouraging anyone to take on the experience (or retry it), without rehashing the application process details that are already covered elsewhere. I&amp;rsquo;ve gathered every source and tool that helped me, starting from the very basics of what GSoC is, focusing on the things I didn&amp;rsquo;t find in other resources.</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/my-gsoc-win/featured.png" />
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       <author>ahmedgaper251@gmail.com (Ahmed Gaper)</author>
       <guid>http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/</guid>
       <description>An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured.jpg" />
     </item>
     
   </channel>

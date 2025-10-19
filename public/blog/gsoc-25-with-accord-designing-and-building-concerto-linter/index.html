@@ -4,7 +4,7 @@
   dir="ltr"
   class="scroll-smooth"
   data-default-appearance="dark"
-  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=59480&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="en">
@@ -22,7 +22,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
+  <link rel="canonical" href="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
   
   
   
@@ -100,7 +100,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
+  <meta property="og:url" content="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/">
   <meta property="og:site_name" content="Ahmed Gaper">
   <meta property="og:title" content="GSoC &#39;25 with Accord : Designing and Building Concerto Linter">
   <meta property="og:description" content="An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.">
@@ -109,12 +109,15 @@
     <meta property="article:section" content="blog">
     <meta property="article:published_time" content="2025-09-16T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-09-16T00:00:00+00:00">
+    <meta property="og:image" content="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured.jpg">
 
   
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured.jpg">
   <meta name="twitter:title" content="GSoC &#39;25 with Accord : Designing and Building Concerto Linter">
   <meta name="twitter:description" content="An overview of my GSoC&#39;25 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.">
-
+<meta name="twitter:image" content="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured.jpg">
+    <meta property="og:image" content="http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured.jpg">
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
@@ -125,7 +128,7 @@
     
     "abstract": "An overview of my GSoC\u002725 project, written to be generic (not specific to the Accord team), covering the structural challenges, the Concerto linter’s workflow, how to build the tool, and how to design and ship a production-ready ruleset.",
     "inLanguage": "en",
-    "url" : "http:\/\/localhost:1313\/blog\/gsoc-25-with-accord-designing-and-building-concerto-linter\/",
+    "url" : "http:\/\/localhost:59480\/blog\/gsoc-25-with-accord-designing-and-building-concerto-linter\/",
     "author" : {
       "@type": "Person",
       "name": "Ahmed Gaper"
@@ -466,37 +469,38 @@
   
 
 
-
-    <div id="hero" class="h-[150px] md:h-[200px]"></div>
-  
-  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+      <div
+        class="w-full rounded-md h-36 md:h-56 lg:h-72 single_hero_basic nozoom"
+        style="background-image:url(/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/featured_hu_6de6af9555a4ea6a.jpg);"></div>
+    
+  <div class="single_hero_background nozoom fixed inset-x-0 top-0 h-[800px]">
     
     
     <img
       id="background-image"
       src="/img/Animated.svg"
       alt="Background Image"
-      class="absolute inset-0 w-full h-full object-cover">
+      class="absolute inset-0 h-full w-full object-cover">
     <div
-      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+      class="from-neutral absolute inset-0 bg-gradient-to-t to-transparent mix-blend-normal dark:from-neutral-800"></div>
     <div
-      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+      class="from-neutral to-neutral absolute inset-0 bg-gradient-to-t opacity-30 mix-blend-normal dark:from-neutral-800 dark:to-neutral-800 dark:opacity-60"></div>
   </div>
+  <div
+    id="background-blur"
+    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
+    integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
+    data-blur-id="background-blur"
+    data-image-id="background-image-main"
+    data-image-url="/img/Animated.svg"></script>
 
-  
-    <div
-      id="background-blur"
-      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
-    
-    
-    <script
-      type="text/javascript"
-      src="/js/background-blur.min.00a57c73ea12f2cab2980c3c3d649e89f6d82f190f74bbe2b67f2f5e39ab7d032ece47086400ca05396758aace13299da49aca43ea643d2625e62c506267a169.js"
-      integrity="sha512-AKV8c&#43;oS8sqymAw8PWSeifbYLxkPdLvitn8vXjmrfQMuzkcIZADKBTlnWKrOEymdpJrKQ&#43;pkPSYl5ixQYmehaQ=="
-      data-blur-id="background-blur"
-      data-image-id="background-image"
-      data-image-url="/img/Animated.svg"></script>
-  
+
       
     
 
@@ -1104,7 +1108,7 @@
         <a
           target="_blank"
           class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;title=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;title=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
           title="Share on LinkedIn"
           aria-label="Share on LinkedIn">
           <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
@@ -1116,7 +1120,7 @@
         <a
           target="_blank"
           class="m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;text=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:59480/blog/gsoc-25-with-accord-designing-and-building-concerto-linter/&amp;text=GSoC%20%2725%20with%20Accord%20:%20Designing%20and%20Building%20Concerto%20Linter"
           title="Tweet on Twitter"
           aria-label="Tweet on Twitter">
           <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
@@ -1143,8 +1147,8 @@
           type="text/javascript"
           src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
           integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
-          data-oid="views_Blog\GSoC &#39;25 with Accord Designing and Building Concerto Linter.md"
-          data-oid-likes="likes_Blog\GSoC &#39;25 with Accord Designing and Building Concerto Linter.md"></script>
+          data-oid="views_Blog\gsoc-25-with-accord-designing-and-building-concerto-linter\index.md"
+          data-oid-likes="likes_Blog\gsoc-25-with-accord-designing-and-building-concerto-linter\index.md"></script>
       
     </section>
 
